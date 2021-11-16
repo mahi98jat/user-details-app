@@ -1,5 +1,6 @@
 import styles from "./user.module.css";
 import { useRouter } from "next/router";
+import Link from "next/link";
 function Users({ users }) {
   const router = useRouter();
   console.log(users.data);
@@ -13,11 +14,8 @@ function Users({ users }) {
           </p>
           <p>{e.email}</p>
           <img src={e.avatar} alt="users"></img>
-          <Link
-           href = {`../user/${e.id}`}
-          >
-            See details
-          </Link>
+          <br />
+          <Link href="../user/user">See details</Link>
         </div>
       ))}
     </div>
