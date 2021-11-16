@@ -1,10 +1,11 @@
 import styles from "./user.module.css";
-
+import { useRouter } from "next/router";
 function Users({ users }) {
+  const router = useRouter();
   console.log(users.data);
   return (
-    <>
-      <h1>All the users are here</h1>
+    <div className={styles.wrapper}>
+      <h1 className={styles._h1}>All the users are here</h1>
       {users.data.map((e) => (
         <div className={styles.card} key={e.id}>
           <p>
@@ -12,9 +13,14 @@ function Users({ users }) {
           </p>
           <p>{e.email}</p>
           <img src={e.avatar} alt="users"></img>
+          <Link
+           href = {`../user/${e.id}`}
+          >
+            See details
+          </Link>
         </div>
       ))}
-    </>
+    </div>
   );
 }
 
